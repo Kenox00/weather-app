@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 
 const WeatherCard = ({ weatherData, units }) => {
@@ -17,19 +16,18 @@ const WeatherCard = ({ weatherData, units }) => {
         <div className="flex items-center">
           <span className="text-5xl font-bold">{Math.round(weatherData.main.temp)}°{units === 'metric' ? 'C' : 'F'}</span>
           {weatherData.weather[0]?.icon && (
-            <Image 
-                src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} 
-                alt={weatherData.weather[0].description}
-                width={80}
-                height={80}
-                className="ml-4"
+            <img 
+              src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} 
+              alt={weatherData.weather[0].description}
+              width={80}
+              height={80}
             />
           )}
         </div>
       </div>
       
       {/* Weather Details */}
-      <div className="grid grid-cols-4 gap-4 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         <div>
           <p className="text-sm text-gray-300">HUMIDITY</p>
           <p className="font-bold">{weatherData.main.humidity}%</p>
@@ -44,7 +42,7 @@ const WeatherCard = ({ weatherData, units }) => {
         </div>
         <div>
           <p className="text-sm text-gray-300">WIND</p>
-          <p className="font-bold">{Math.round(weatherData.wind.speed)}mph</p>
+          <p className="font-bold">{Math.round(weatherData.wind.speed)} {units === 'metric' ? 'm/s' : 'mph'}</p>
         </div>
       </div>
     </div>
