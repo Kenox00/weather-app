@@ -3,7 +3,7 @@ import React from 'react';
 
 const NearbyLocations = ({ nearbyLocations, setCity, fetchWeatherData }) => {
   if (!nearbyLocations || nearbyLocations.length === 0) return null;
-  
+
   return (
     <div>
       <h3 className="text-xl font-semibold mt-8 mb-4 text-white">Nearby Locations</h3>
@@ -11,7 +11,7 @@ const NearbyLocations = ({ nearbyLocations, setCity, fetchWeatherData }) => {
         {nearbyLocations.map((location, index) => (
           <div 
             key={index} 
-            className="bg-gray-800 bg-opacity-70 p-4 rounded-lg cursor-pointer hover:bg-gray-700"
+            className="bg-blue-500 bg-opacity-60 p-4 rounded-lg cursor-pointer hover:bg-blue-400 transition duration-200"
             onClick={() => {
               setCity(location.name);
               fetchWeatherData();
@@ -20,7 +20,7 @@ const NearbyLocations = ({ nearbyLocations, setCity, fetchWeatherData }) => {
             <div className="flex justify-between items-center">
               <div>
                 <h4 className="font-semibold text-white">{location.name}</h4>
-                <p className="text-sm text-gray-300">{location.sys.country}</p>
+                <p className="text-sm text-blue-100">{location.sys.country}</p>
               </div>
               <div className="flex items-center">
                 <span className="text-2xl font-bold mr-2 text-white">{Math.round(location.main.temp)}°</span>
